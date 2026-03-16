@@ -6,7 +6,7 @@
 #    By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/08 21:52:29 by huidris           #+#    #+#              #
-#    Updated: 2026/03/08 21:53:02 by huidris          ###   ########.fr        #
+#    Updated: 2026/03/15 21:20:11 by huidris          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 CC		= c++
 
-SRC		= btc.cpp main.cpp
+SRC		= BitcoinExchange.cpp main.cpp
 
 $(NAME): $(SRC)
 		$(CC) $(FLAGS) $(SRC) -o $(NAME)
