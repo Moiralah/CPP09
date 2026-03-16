@@ -2,21 +2,21 @@
 
 int main(int ac, char **av)
 {
-    if (ac != 2)
-    {
-        std::cerr << "Invalid argument" << std::endl;
-        return 1;
-    }
+	if (ac != 2)
+	{
+		std::cerr << "Invalid argument. ./RPN <string of calculation>" << std::endl;
+		return 1;
+	}
 
-    try
-    {
-        RPN rpn;
-        std::cout << rpn.operate(av[1]) << std::endl;
-    }
-    catch(std::exception &e)
-    {
-        std::cout<< e.what();
-    }
+	try
+	{
+		RPN rpn;
+		std::cout << rpn.operation(av[1]) << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
-    return 0;
+	return 0;
 }
