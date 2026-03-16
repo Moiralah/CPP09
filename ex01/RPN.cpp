@@ -22,11 +22,13 @@ int RPN::operation(std::string av)
 			else
 				throw std::runtime_error("Error: Invalid argument: " + token);
 		}
+
 		if (isdigit(token[0]))
 		{
 			_val.push(atoi(token.c_str()));
 			continue;
 		}
+
 		else if (token == "+" || token == "-" || token == "*" || token == "/")
 		{
 			if (_val.size() < 2)
@@ -50,6 +52,7 @@ int RPN::operation(std::string av)
 				_val.push(a / b);
 			}
 		}
+		
 		else
 			throw std::runtime_error("Error: Invalid argument: " + token);
 	}
