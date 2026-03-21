@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= btc
+NAME	= PmergeMe
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 CC		= c++
 
-SRC		= btc.cpp main.cpp
+SRC		= PmergeMe.cpp main.cpp
 
 $(NAME): $(SRC)
 		$(CC) $(FLAGS) $(SRC) -o $(NAME)
