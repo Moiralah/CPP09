@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/24 13:26:33 by huidris           #+#    #+#             */
+/*   Updated: 2026/03/24 13:26:34 by huidris          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RPN.hpp"
 
 RPN::RPN() {}
@@ -52,7 +64,7 @@ int RPN::operation(std::string av)
 				_val.push(a / b);
 			}
 		}
-		
+
 		else
 			throw std::runtime_error("Error: Invalid argument: " + token);
 	}
