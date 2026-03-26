@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:26:33 by huidris           #+#    #+#             */
-/*   Updated: 2026/03/24 13:26:34 by huidris          ###   ########.fr       */
+/*   Updated: 2026/03/26 15:27:29 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int RPN::operation(std::string av)
 		if (token.size() > 1)
 		{
 			if ((token[0] == '-' || token[0] == '+' ) && isdigit(token[1]))
-			{
-				_val.push(atoi(token.c_str()));
-				continue;
-			}
+				throw std::runtime_error("Error: Only unsigned number allowed.");
 			else if (isdigit(token[0]) && isdigit(token[1]))
 				throw std::runtime_error("Error: Only single digit number allowed.");
 			else
@@ -64,7 +61,6 @@ int RPN::operation(std::string av)
 				_val.push(a / b);
 			}
 		}
-
 		else
 			throw std::runtime_error("Error: Invalid argument: " + token);
 	}

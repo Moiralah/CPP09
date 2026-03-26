@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 08:55:47 by huidris           #+#    #+#             */
-/*   Updated: 2026/03/16 23:18:38 by huidris          ###   ########.fr       */
+/*   Updated: 2026/03/26 15:02:44 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@ BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::~BitcoinExchange() {}
 
+bool isleap(int year)
+{
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		return true;
+	return false;
+}
+
+bool ismonth31day(int month)
+{
+	int months[] = {1, 3, 5, 7, 8, 10, 12};
+	for (int i = 0; i < 7; i++)
+		if (month == (months[i] - 1))
+			return true;
+	return false;
+}
+
 static bool check_date(const std::string date)
 {
 	struct tm tm;
@@ -24,6 +40,19 @@ static bool check_date(const std::string date)
 	char *righttime = strptime(date.c_str(), "%Y-%m-%d", &tm);
 
 	if (righttime == NULL || *righttime != '\0')
+		return false;
+
+	int year, month, day;
+	sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day);
+	if (year != tm.tm_year + 1900 ||
+		month != tm.tm_mon + 1 ||
+		day != tm.tm_mday)
+		return false;
+	if (!isleap(year) && (tm.tm_mon == 1) && (tm.tm_mday > 28))
+		return false;
+	else if (isleap(year) && (tm.tm_mon == 1) && (tm.tm_mday > 29))
+		return false;
+	else if (!ismonth31day(tm.tm_mon) && (tm.tm_mday > 30))
 		return false;
 	return true;
 }
@@ -99,7 +128,7 @@ int BitcoinExchange::processInput(const std::string &input)
 		return 1;
 	}
 
-	if(read != "date | value")
+	if (read != "date | value")
 	{
 		std::cerr << "Error: invalid database header." << std::endl;
 		return 1;

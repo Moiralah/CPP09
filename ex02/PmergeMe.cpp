@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:01:49 by huidris           #+#    #+#             */
-/*   Updated: 2026/03/24 13:34:51 by huidris          ###   ########.fr       */
+/*   Updated: 2026/03/26 15:28:46 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ PmergeMe::PmergeMe(char **av)
 				throw std::runtime_error("Error: Only digit allowed");
 
 		long n = atol(av[i]);
-		if (n > 2147483647)
-			throw std::runtime_error("Error: Number too large ");
+		if (n <= 0 && n > 2147483647)
+			throw std::runtime_error("Error: Number out of range");
 
 		if (std::find(_vec.begin(), _vec.end(), n) != _vec.end())
 			throw std::runtime_error("Error: Duplicate number not allowed ");
